@@ -19,16 +19,27 @@ export class TodosPage extends React.Component<{}, TodosState> {
         super(props);
         this.state = {items: []};
         this.addItem = this.addItem.bind(this);
+        this.removeItem = this.removeItem.bind(this);
     }
 
     addItem(item: TodoItem){
         this.state.items.splice(this.state.items.length,0,item);
         this.setState({items: this.state.items});
     }
+
+    removeItem(item: TodoItem){
+        const indexOf = this.state.items.indexOf(item);
+        this.state.items.splice(indexOf,1);
+        this.setState({items: this.state.items});
+    }
+
     render = () =>
         <div style={this.styles}>
             <h1>Add Todo</h1>
             <TodoBar onAdded={this.addItem} />
-            <TodoItems items={this.state.items}/>
+            <TodoItems
+                items={this.state.items}
+                onItemRemoved={this.removeItem}
+            />
         </div>
 }

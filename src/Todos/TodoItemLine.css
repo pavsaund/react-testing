@@ -1,0 +1,7 @@
+.removeButton {
+    opacity: 0;
+}
+
+li:hover .removeButton {
+    opacity: 1;
+}

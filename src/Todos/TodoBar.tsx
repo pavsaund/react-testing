@@ -1,8 +1,7 @@
 import React, { CSSProperties } from 'react';
 import { TodoItem } from './TodoItem';
 
-
-export type TodoBarParams = {
+export type TodoBarProps = {
     items: TodoItem[];
 
 };
