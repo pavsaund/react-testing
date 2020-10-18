@@ -20,6 +20,7 @@ export class TodosPage extends React.Component<{}, TodosState> {
         this.state = {items: []};
         this.addItem = this.addItem.bind(this);
         this.removeItem = this.removeItem.bind(this);
+        this.toggleDone = this.toggleDone.bind(this);
     }
 
     addItem(item: TodoItem){
@@ -33,6 +34,11 @@ export class TodosPage extends React.Component<{}, TodosState> {
         this.setState({items: this.state.items});
     }
 
+    toggleDone(item: TodoItem){
+        item.toggleDone();
+        this.setState({items: this.state.items});
+    }
+
     render = () =>
         <div style={this.styles}>
             <h1>Add Todo</h1>
@@ -40,6 +46,7 @@ export class TodosPage extends React.Component<{}, TodosState> {
             <TodoItems
                 items={this.state.items}
                 onItemRemoved={this.removeItem}
+                onItemToggledDone={this.toggleDone}
             />
         </div>
 }

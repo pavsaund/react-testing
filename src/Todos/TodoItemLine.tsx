@@ -5,6 +5,7 @@ type TodoItemLineProps = {
     item: TodoItem;
     index: number;
     onRemove: (item: TodoItem) => void;
+    onToggledDone: (item: TodoItem) => void;
 };
 
 export function TodoItemLine(props: TodoItemLineProps) {
@@ -23,9 +24,13 @@ export function TodoItemLine(props: TodoItemLineProps) {
         props.onRemove(props.item);
     };
 
+    const toggleDone = function() {
+        props.onToggledDone(props.item);
+    };
+
     return (
-        <li>
-            {props.index + 1}.{props.item.todo}
+        <li className={props.item.done ? 'done': ''}>
+            <span onClick={toggleDone}>{props.index + 1}.{props.item.todo}</span>
             <button
                 className="removeButton"
                 style={removeButtonStyle}

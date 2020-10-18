@@ -1,7 +1,13 @@
+li.done .removeButton,
+li.done:hover .removeButton,
 .removeButton {
     opacity: 0;
 }
 
 li:hover .removeButton {
     opacity: 1;
+}
+
+li.done {
+    text-decoration: line-through;
 }

@@ -6,6 +6,7 @@ import "./TodoItemLine.css";
 type TodoItemsProps = {
     items: TodoItem[];
     onItemRemoved: (item: TodoItem) => void;
+    onItemToggledDone: (item: TodoItem) => void;
 };
 
 export function TodoItems(props: TodoItemsProps) {
@@ -20,6 +21,7 @@ export function TodoItems(props: TodoItemsProps) {
             item={i}
             index={index}
             onRemove={props.onItemRemoved}
+            onToggledDone={props.onItemToggledDone}
         />);
     return (
         <ul style={style}>{allTodos}</ul>
