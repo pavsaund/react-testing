@@ -34,7 +34,7 @@ export class TodoBar extends React.Component<{ onAdded: (item: TodoItem) => void
     }
 
     handleKeypress(e: React.KeyboardEvent<HTMLInputElement>) {
-        if (e.key === 'Enter') {
+        if (this.state.value && e.key === 'Enter') {
             this.handleAdd();
         }
     }
@@ -56,7 +56,7 @@ export class TodoBar extends React.Component<{ onAdded: (item: TodoItem) => void
                     onKeyPress={this.handleKeypress}
                     onChange={this.handleChange}
                 ></input>
-                <button style={this.buttonStyle} onClick={this.handleAdd}>Add</button>
+                <button disabled={!this.state.value} style={this.buttonStyle} onClick={this.handleAdd}>Add</button>
             </>
         );
     };
