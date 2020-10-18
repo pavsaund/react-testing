@@ -23,6 +23,10 @@ export class TodosPage extends React.Component<{}, TodosState> {
         this.toggleDone = this.toggleDone.bind(this);
     }
 
+    get remainingTasks():number {
+        return this.state.items.filter(i => !i.done).length;
+    }
+
     addItem(item: TodoItem){
         this.state.items.splice(this.state.items.length,0,item);
         this.setState({items: this.state.items});
@@ -41,7 +45,7 @@ export class TodosPage extends React.Component<{}, TodosState> {
 
     render = () =>
         <div style={this.styles}>
-            <h1>Add Todo</h1>
+            <h1>Add Todo ({this.remainingTasks > 0 ? `${this.remainingTasks} to go`: `all done🎉`})</h1>
             <TodoBar onAdded={this.addItem} />
             <TodoItems
                 items={this.state.items}
