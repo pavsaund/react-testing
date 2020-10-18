@@ -2,10 +2,12 @@ li.done .removeButton,
 li.done:hover .removeButton,
 .removeButton {
     opacity: 0;
+    pointer-events: none;
 }
 
 li:hover .removeButton {
     opacity: 1;
+    pointer-events: initial;
 }
 
 li.done {
